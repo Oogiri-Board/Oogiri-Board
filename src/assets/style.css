@@ -1,0 +1,56 @@
+
+
+
+/* モーダルのスタイル */
+.modal {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.6);
+}
+
+.modal-inner {
+  position: absolute;
+  top: 8%;
+  right: 0;
+  left: 0;
+  width: 480px;
+  padding-bottom: 60px;
+  margin: auto;
+  background-color: #fff;
+  border-radius: 8px;
+  text-align: center;
+}
+
+.modal-content {
+  width: 384px;
+  line-height: 32px;
+  margin: 36px auto;
+}
+
+.modal-close-btn {
+  color: #8491a5;
+  width: 200px;
+  padding: 16px 0;
+  border: 0;
+  background-color: #f0f4f9;
+  cursor: pointer;
+}
+
+.modal-close-btn:hover {
+  color: #8491a5;
+  background-color: #ccd9ea;
+  transition: .3s ease-in-out;
+}
+
+@media (max-width: 670px) {
+  .modal-inner {
+    width: 320px;
+    height: 200px;
+  }
+  .modal-content {
+    width: 200px;
+  }
+}
