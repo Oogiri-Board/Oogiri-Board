@@ -1,16 +1,24 @@
-import React from 'react';
-import Memo from './Memo';
+import React, {useState, useCallback} from 'react';
 import './assets/style.css';
 import ConfirmModal from './templates/ConfirmModal';
 
 const App = () => {
+
+  const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
+
+  const clickModal = useCallback((isOpen: boolean): void => {
+    setIsModalOpen(isOpen);
+    console.log(`openModal: ${isModalOpen}`);
+  }, [setIsModalOpen]);
+
   return (
     <div>
-      <Memo title={"ホームページ"} no={1} description={"今夜のデザートを選んでください"} />
-      
-      {/* このコンポーネントからモーダル開閉の操作したい */}
-      <ConfirmModal isModalOpen={false} />
-      <div id="modal"></div>
+      {/* このコンポーネントからモーダルを開きたい */}
+      <ConfirmModal isModalOpen={isModalOpen} clickModal={clickModal}/>
+
+      <button onClick={() => clickModal(true)}>
+        Open
+      </button>
     </div>
   );
 }
