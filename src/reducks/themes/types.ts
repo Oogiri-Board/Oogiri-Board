@@ -1,12 +1,13 @@
-type ThemeProps = {
+type JokesProps = {
   type: string,
 
-  themes: [{
-    handleName: string,
+  jokes: [{
+    handleName: string;
     id: number,
     isDisplay: boolean,
-    theme: string
+    joke: string,
+    likes: number
   }],
 }
 
-export default ThemeProps;
+export default JokesProps;

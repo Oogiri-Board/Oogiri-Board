@@ -1,27 +1,41 @@
 import React, { useState } from 'react';
+import { CommonButton } from '../components/UIKit';
 
 type ConfirmModalProps = {
+  clickModal: (isModalOpen: boolean) => void;
   isModalOpen: boolean;
-  clickModal: any;          // ﾆｹﾞﾁｬﾀﾞﾒﾀﾞﾆｹﾞﾁｬﾀﾞﾒﾀﾞﾆｹﾞﾁｬﾀﾞﾒﾀﾞ
 }
 
 const ConfirmModal = (props: ConfirmModalProps) => {
 
-  let modal: JSX.Element | undefined;
-  if (props.isModalOpen) {
+  let modal: JSX.Element = (<></>);
+  
+  const [isModalOpen, setIsModalOpen] = useState<boolean>(props.isModalOpen);
+
+  if (isModalOpen) {
     
     modal = (
-      <div className="modal">
+      <div className="modal" onClick={() => props.clickModal(false)}>
         <div className="modal-inner">
           <div className="modal-content">
-            <p>モーダル</p>
+            <p>めっせーじ</p>
           </div>
-          <button
+          {/* <button
             className="modal-close-btn"
             onClick={() => props.clickModal(false)}
           >
             とじる
-          </button>
+          </button> */}
+
+          <CommonButton
+            label={"閉じる"}
+            onClick={() => setIsModalOpen(false)}
+          />
+
+          {/* <CommonButton
+            label={"閉じる"}
+            onClick={props.clickModal(false)}
+          /> */}
         </div>
       </div>
     );

@@ -21,6 +21,8 @@ const initialState = {
     //   likes: 0
     // }],
   }],
+
+  isModalOpen: false,
 };
 
 export default initialState;
