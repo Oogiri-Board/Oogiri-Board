@@ -22,7 +22,6 @@ const initialState = {
     // }],
   }],
 
-  isModalOpen: false,
 };
 
 export default initialState;

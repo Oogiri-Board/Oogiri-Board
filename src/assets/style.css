@@ -1,5 +1,36 @@
+* {
+  margin: 0;
+  box-sizing: border-box;
+}
+ul {
+  list-style: none;
+  padding: 0;
+}
 
+/* 投稿のスタイル */
+.contents {
+  border: 1px solid black;
+  border-radius: 16px;
+  margin: 18px auto;
+  padding: 0 16px;
+  width: 860px;
+  background-color: #efefef;
+}
 
+.theme {
+  border: 1px solid black;
+  border-radius: 4px;
+  padding: 4px;
+}
+
+.joke-list {
+  border: 1px solid black;
+  border-radius: 16px;
+}
+.joke {
+  border: 1px solid black;
+  border-radius: 16px;
+}
 
 
 
@@ -41,13 +72,15 @@
 }
 
 .common-button {
-  color: #326dc7;
+  color: #f0f4f9;
   width: 200px;
   padding: 16px 0;
   border: 0;
-  background-color: #f0f4f9;
+  background-color: #326dc7;
   cursor: pointer;
-  box-shadow: 2px 2px 8px 0 rgba(0, 0, 0, 0.5);
+  box-shadow: 2px 2px 4px 0 rgba(0, 0, 0, 0.5);
+  font-size: 18px;
+  font-weight: bold;
 
 }
 

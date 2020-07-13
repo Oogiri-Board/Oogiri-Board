@@ -1,8 +1,13 @@
 import { createSelector } from 'reselect';
 
-const jokesSelector = (state) => state.jokes;
+const themesSelector = (state) => state.themes;
 
 export const getHandleName = createSelector(
-  [jokesSelector],
-  state => state.jokes.handleName
+  [themesSelector],
+  state => state.themes.handleName
+);
+
+export const getTheme = createSelector(
+  [themesSelector],
+  state => state.themes.theme
 );
