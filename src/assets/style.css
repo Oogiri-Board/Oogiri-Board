@@ -6,11 +6,16 @@ ul {
   list-style: none;
   padding: 0;
 }
-
+.spacing-small {
+  height: 12px;
+}
+.spacing-middium {
+  height: 24px;
+}
 /* 投稿のスタイル */
 .contents {
-  border: 1px solid black;
-  border-radius: 16px;
+  border: solid 1px black;
+  border-radius: 4px;
   margin: 18px auto;
   padding: 0 16px;
   width: 860px;
@@ -18,18 +23,48 @@ ul {
 }
 
 .theme {
-  border: 1px solid black;
-  border-radius: 4px;
-  padding: 4px;
+  padding: 12px 8px 8px 16px;
+}
+.theme-header {
+  display: flex;
+  justify-content: space-between;
+  /* padding: 0 8px; */
+}
+.theme-img-area {
+  margin: 0 auto;
+
+  /* 画像のサイズ firestorageに保存するときにサイズ指定 */
+  width: 620px;
+  height: 360px;
+
+  background-color: pink;
+  border: solid 1px transparent;
+}
+.theme-document {
+  text-align: center;
+  font-size: 28px;
+}
+.theme-icons {
+  display: flex;
 }
 
-.joke-list {
-  border: 1px solid black;
-  border-radius: 16px;
+.joke-header {
+  display: flex;
+  justify-content: space-between;
 }
 .joke {
-  border: 1px solid black;
-  border-radius: 16px;
+  border: solid 1px black;
+  border-radius: 4px;
+  margin-bottom: 8px;
+  padding: 12px 8px 8px 16px;
+}
+.joke-document {
+  text-align: center;
+  font-size: 24px;
+}
+.joke-likes {
+  display: flex;
+  justify-content: space-around;
 }
 
 
