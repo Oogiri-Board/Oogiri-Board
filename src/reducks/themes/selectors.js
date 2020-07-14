@@ -7,7 +7,7 @@ export const getHandleName = createSelector(
   state => state.themes.handleName
 );
 
-export const getTheme = createSelector(
+export const getThemes = createSelector(
   [themesSelector],
-  state => state.themes.theme
+  state => state.themes
 );

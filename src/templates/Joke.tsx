@@ -13,10 +13,20 @@ const Joke = (props: JokeProps) => {
   return (
     <li className="joke">
       <div className="joke-header">
-        <p>お名前: {props.respondentName}</p>
+        <p>{props.respondentName}</p>
+        <p>{"7/14 20:00"}</p>
       </div>
+
+      <div className="spacing-small"></div>
+
       <div className="joke-document">
-        <p>回答: {props.joke}</p>
+        <p>{props.joke}</p>
+      </div>
+      
+      <div className="spacing-small"></div>
+
+      <div className="joke-likes">
+        <p>♡</p>
         <p>いいね数: {props.likes}</p>
       </div>
     </li>
