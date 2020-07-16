@@ -1,11 +1,13 @@
 import React from 'react';
+import IconButton from '@material-ui/core/IconButton';
+import StarBorderIcon from '@material-ui/icons/StarBorder';
 
 type JokeProps = {
-  id: number;
-  respondentName: string;
+  key: string
+  jokeId: string;
+  handleName: string;
   joke: string;
   likes: number;
-  key: string;
 }
 
 const Joke = (props: JokeProps) => {
@@ -13,7 +15,7 @@ const Joke = (props: JokeProps) => {
   return (
     <li className="joke">
       <div className="joke-header">
-        <p>{props.respondentName}</p>
+        <p>{props.handleName}</p>
         <p>{"7/14 20:00"}</p>
       </div>
 
@@ -26,7 +28,12 @@ const Joke = (props: JokeProps) => {
       <div className="spacing-small"></div>
 
       <div className="joke-likes">
-        <p>♡</p>
+        <IconButton >
+          <label>
+            <StarBorderIcon />
+          </label>
+        </IconButton>
+
         <p>いいね数: {props.likes}</p>
       </div>
     </li>

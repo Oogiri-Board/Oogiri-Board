@@ -1,40 +1,33 @@
 import React, {useState, useEffect } from 'react';
-import { useSelector } from 'react-redux';
-import { getHandleName, getThemes } from '../reducks/themes/selectors';
-import { Joke } from './index';
+import { useSelector, useDispatch } from 'react-redux';
+import { JokeList } from './index';
 import IconButton from '@material-ui/core/IconButton';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import ExpandLessIcon from '@material-ui/icons/ExpandLess';
 import CreateIcon from '@material-ui/icons/Create';
+import {push} from 'connected-react-router';
 
 export type ThemeProps = {
+  themeId: string;
   handleName: string;
-  index: number;
-  id: number;
-  jokes: any;   // ﾆｹﾞﾁｬﾀﾞﾒﾀﾞ
   key: string;
   theme: string;
+  created_at: string;
 }
 
 const Theme = (props: ThemeProps) => {
 
+  const dispatch = useDispatch();
+
   const [isDisplayMore, setIsDisplayMore] = useState<boolean>(false); 
-  console.log(`theme: ${props.theme}`);
-  console.log(`id: ${props.id}`);
-  console.log(`jokes: ${props.jokes[props.id].joke}`);
-
-  // 非破壊的に配列を逆順にする
-  const jokes = props.jokes.slice().reverse();
-
-  const date = new Date();
-  const MM = date.getMonth() + 1,
-        DD = date.getDate(),
-        hh = date.getHours(),
-        mm = date.getMinutes();
-
-  const created = `${MM}/${DD} ${hh}:${mm}`;
-  console.log(created);  
   
+  const createURL = "/joke/create/" + props.themeId;
+
+  console.log(`URL: ${createURL}`);
+  console.log(`themeId: ${props.themeId}`);
+  
+  const created = `7/15 19:00`;
+
   return (
     <li className="contents">
       <div className="theme">
@@ -74,7 +67,7 @@ const Theme = (props: ThemeProps) => {
           )}
         </div>
         <div className="create-joke-btn">
-          <IconButton onClick={() => {console.log("create")}}>
+          <IconButton onClick={() => dispatch(push(createURL))}>
             <label>
               <CreateIcon />
             </label>
@@ -83,22 +76,11 @@ const Theme = (props: ThemeProps) => {
       </div>
 
         {/* 一覧表示ON時のみ回答一覧を表示 */}
-        { isDisplayMore && (
+      { isDisplayMore && (
         <ul className="joke-list">
-          { jokes.map((joke: any, index: number) => {
-            
-            return (
-              <Joke
-                likes={joke.likes}
-                joke={joke.joke}
-                id={joke.id}
-                key={index.toString()}
-                respondentName={joke.respondentName}
-              />
-            );
-          })}
+          <JokeList themeId={props.themeId} />
         </ul>
-        )}
+      )}
       </div>
     </li>
   );
