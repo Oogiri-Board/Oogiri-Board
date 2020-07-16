@@ -1,31 +1,44 @@
 type InitialStateObj = {
   themes: {
     handleName: string;
-    id: number;
+    id: string;
     theme: string;
-    img?: string;
+    img: string;
     jokes: {
-        respondentName: string;
-        jokeId: number;
-        joke: string;
-        likes: number;
-    }[];
-  }[]
+      handleName: string;
+      jokeId: number;
+      joke: string;
+      likes: number;
+    }
+  },
+  jokes: {
+    handleName: string;
+    joke: string;
+    id: string;
+    likes: number;
+  }
 }
 
 const initialState: InitialStateObj = {
   // 複数のお題とそれらの子(回答)
-  themes: [{
+  themes: {
     handleName: '',
-    id: 0,
+    id: "",
+    img: '',
     theme: '',
-    jokes: [{
-      respondentName: '',
+    jokes: {
+      handleName: '',
       jokeId: 0,
       joke: '',
       likes: 0
-    }],
-  }],
+    },
+  },
+  jokes : {
+    handleName: '',
+    joke: '',
+    id: "",
+    likes: 0,
+  }
 
 };
 

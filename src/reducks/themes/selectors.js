@@ -1,13 +1,14 @@
 import { createSelector } from 'reselect';
 
 const themesSelector = (state) => state.themes;
-
-export const getHandleName = createSelector(
-  [themesSelector],
-  state => state.themes.handleName
-);
+// const jokeSeector = (state) => state.themes;
 
 export const getThemes = createSelector(
   [themesSelector],
-  state => state.themes
+  state => state.list
 );
+
+// export const getThemeById = createSelector(
+//   [jokeSeector],
+//   state => state.list
+// )

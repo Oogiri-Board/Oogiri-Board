@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
-import { CommonButton } from '../components/UIKit';
+import { CommonButton } from './index';
 
 type ConfirmModalProps = {
   clickModal: (isModalOpen: boolean) => void;
   isModalOpen: boolean;
+  message: string;
 }
 
 const ConfirmModal = (props: ConfirmModalProps) => {
@@ -27,15 +28,15 @@ const ConfirmModal = (props: ConfirmModalProps) => {
             とじる
           </button> */}
 
-          <CommonButton
-            label={"閉じる"}
-            onClick={() => setIsModalOpen(false)}
-          />
-
           {/* <CommonButton
             label={"閉じる"}
-            onClick={props.clickModal(false)}
+            onClick={() => setIsModalOpen(false)}
           /> */}
+
+          <CommonButton
+            label={"閉じる"}
+            onClick={props.clickModal(false)}
+          />
         </div>
       </div>
     );

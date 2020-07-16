@@ -2,7 +2,7 @@ import React from 'react';
 import { useDispatch } from 'react-redux'; 
 import { push } from 'connected-react-router';
 import { CommonButton } from '../components/UIKit';
-import { ThemesList } from './index';
+import { ThemeList } from './index';
 
 const Home = () => {
 
@@ -17,7 +17,7 @@ const Home = () => {
         onClick={() => dispatch(push('/createtheme'))}
       />
       {/* DBにある分だけお題を表示する（新しいものから） */}
-      <ThemesList />
+      <ThemeList />
     </div>
   );
 }
