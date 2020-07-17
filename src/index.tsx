@@ -10,6 +10,10 @@ import * as History from 'history';
 const history = History.createBrowserHistory();
 export const store = createStore(history);
 
+store.subscribe(() => {
+  console.log(store.getState());
+})
+
 ReactDOM.render(
   <Provider store={store}>
     <ConnectedRouter history={history}>

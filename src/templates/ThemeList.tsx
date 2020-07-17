@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Theme } from './index';
 import { getThemes } from '../reducks/themes/selectors';
@@ -17,9 +17,6 @@ const ThemeList = () => {
   const selector = useSelector((state) => state);
   const themes: any = getThemes(selector);
 
-  console.log("Theme List");
-  
-  
   useEffect(() => {
     dispatch(fetchThemes());
   }, []);

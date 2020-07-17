@@ -16,7 +16,6 @@ const Home = () => {
         label={"お題を作成する"}
         onClick={() => dispatch(push('/createtheme'))}
       />
-      {/* DBにある分だけお題を表示する（新しいものから） */}
       <ThemeList />
     </div>
   );

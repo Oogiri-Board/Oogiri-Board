@@ -1,5 +1,5 @@
-import React, {useState, useEffect } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
+import React, {useState } from 'react';
+import { useDispatch } from 'react-redux';
 import { JokeList } from './index';
 import IconButton from '@material-ui/core/IconButton';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
@@ -15,6 +15,7 @@ export type ThemeProps = {
   created_at: string;
 }
 
+// ボタンを押すとお題の子要素回答一覧を表示する
 const Theme = (props: ThemeProps) => {
 
   const dispatch = useDispatch();
@@ -23,9 +24,6 @@ const Theme = (props: ThemeProps) => {
   
   const createURL = "/joke/create/" + props.themeId;
 
-  console.log(`URL: ${createURL}`);
-  console.log(`themeId: ${props.themeId}`);
-  
   const created = `7/15 19:00`;
 
   return (
@@ -37,8 +35,9 @@ const Theme = (props: ThemeProps) => {
           <p>{created}</p>
         </div>
         <div className="spacing-middium"></div>
-        <div className="theme-img-area">
-          <img src="../assets/mel-emo.png" />
+        {/* <div className="theme-img-area"> */}
+        <div className="">
+          {/* <img src="../assets/mel-emo.png" /> */}
         </div>
         <div className="spacing-middium"></div>
         <div className="theme-document">
@@ -80,7 +79,7 @@ const Theme = (props: ThemeProps) => {
         <ul className="joke-list">
           <JokeList themeId={props.themeId} />
         </ul>
-      )}
+      ) }
       </div>
     </li>
   );
