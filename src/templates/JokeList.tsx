@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Joke } from './index';
 import { getJokes } from '../reducks/jokes/selectors';
@@ -14,16 +14,14 @@ const JokeList = (props: JokeListProps) => {
   const selector = useSelector((state) => state);
   const jokes: any = getJokes(selector);
 
-  console.log("オペレーションに渡すテーマIDは");
-  console.log(props.themeId);
-  
   useEffect(() => {
     dispatch(fetchJokes(props.themeId));
+
+    console.log("-----fetchJokes-----");
+    console.log(jokes)
   }, []);
 
-  if (jokes) {
-    console.log(JSON.stringify(jokes));
-  }
+  console.log(`お題ID: ${props.themeId}`);
 
   return (
     <section>
@@ -31,13 +29,14 @@ const JokeList = (props: JokeListProps) => {
         {/* if文でネストしなければいけない・・・ */}
         { jokes && (
           jokes.length > 0 && (
-            (jokes.map((joke: any) => (
+            (jokes.map((joke: any, index: number) => (
               <Joke
                 key={joke.id}
                 jokeId={joke.id}
                 handleName={joke.handleName}
                 joke={joke.joke}
                 likes={0}
+                index={index}
               />
             )))
           )

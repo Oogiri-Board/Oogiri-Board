@@ -18,6 +18,8 @@ export const fetchJokes = (themeId) => {
           // 本当はwhere句でしぼる？
           if (snapshot.data().themeId === themeId) {
             const joke = snapshot.data();
+            console.log(`themeId: ${themeId}`);
+            console.log(`joke.themeId: ${joke.themeId}, joke: ${joke.joke}`)
             jokeList.push(joke);
           }
         });

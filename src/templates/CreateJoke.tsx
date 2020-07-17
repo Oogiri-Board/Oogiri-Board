@@ -10,7 +10,7 @@ const CreateJoke = () => {
   const dispatch = useDispatch();
 
   let themeId = window.location.pathname.split('/joke/create')[1];
-
+  
   if (themeId !== "") {
     themeId = themeId.split('/')[1];
     console.log(themeId);
