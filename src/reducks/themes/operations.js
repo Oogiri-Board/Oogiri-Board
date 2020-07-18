@@ -22,7 +22,7 @@ export const fetchThemes = () => {
 }
 
 // CreateTheme画面で作成したデータをDBに保存する
-export const saveTheme = (handleName, theme) => {
+export const saveTheme = (handleName, theme, image) => {
   return async (dispatch) => {
 
     // データ作成・成形
@@ -30,7 +30,8 @@ export const saveTheme = (handleName, theme) => {
     const data = {
       handleName: handleName,
       theme: theme,
-      created_at: timestamp
+      created_at: timestamp,
+      image: image,
     }
     const ref = themesRef.doc();
     const id = ref.id;

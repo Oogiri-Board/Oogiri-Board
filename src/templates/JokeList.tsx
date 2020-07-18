@@ -16,12 +16,7 @@ const JokeList = (props: JokeListProps) => {
 
   useEffect(() => {
     dispatch(fetchJokes(props.themeId));
-
-    console.log("-----fetchJokes-----");
-    console.log(jokes)
   }, []);
-
-  console.log(`お題ID: ${props.themeId}`);
 
   return (
     <section>
@@ -35,8 +30,10 @@ const JokeList = (props: JokeListProps) => {
                 jokeId={joke.id}
                 handleName={joke.handleName}
                 joke={joke.joke}
-                likes={0}
+                likes={joke.likes}
                 index={index}
+                created_at={joke.created_at}
+                themeId={props.themeId}
               />
             )))
           )

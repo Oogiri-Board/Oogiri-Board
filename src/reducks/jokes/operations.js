@@ -1,6 +1,6 @@
 import { push } from 'connected-react-router';
 import { FirebaseTimestamp, db } from '../../firebase';
-import { fetchJokesAction } from './actions';
+import { fetchJokesAction, incrementLikesAction } from './actions';
 
 const themesRef = db.collection('themes');
 
@@ -44,7 +44,8 @@ export const saveJoke = (themeId, handleName, joke) => {
       handleName: handleName,
       id: id,
       joke: joke,
-      themeId: themeId
+      themeId: themeId,
+      likes: 0
     }
 
     // データ追加
@@ -52,6 +53,25 @@ export const saveJoke = (themeId, handleName, joke) => {
       .then(() => {
         dispatch(push('/'));
       }).catch((error) => {
+        throw new Error(error);
+      });
+  }
+};
+
+export const incrementLikes = (themeId, jokeId, likes) => {
+  return async (dispatch) => {
+    console.log("いいね++");
+    const jokesRef = themesRef.doc(themeId).collection('jokes').doc(jokeId);
+
+    const data = {
+      likes: likes++
+    };
+    return jokesRef.set(data, {merge: true})
+      .then((snapshot) => {
+        console.log(`snapshot: ${snapshot}`)
+        dispatch(incrementLikesAction(snapshot));
+      })
+      .catch((error) => {
         throw new Error(error);
       });
   }

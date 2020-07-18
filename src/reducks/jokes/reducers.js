@@ -4,14 +4,16 @@ import initialState from '../store/initialState';
 export const JokeReducer = (state = initialState.jokes, action) => {
   switch (action.type) {
     case Actions.FETCH_JOKES:
-      // return {
-      //   ...state,
-      //   ...action.payload
-      // }
       return {
         ...state,
         list: [...action.payload]
       }
+
+      case Actions.INCREMENT_LIKES:
+        return {
+          ...state,
+          ...action.payload
+        }
 
       default:
       return state;

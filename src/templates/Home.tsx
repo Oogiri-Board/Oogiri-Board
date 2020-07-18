@@ -10,13 +10,14 @@ const Home = () => {
 
   return (
     <div>
-
-      <h1>大喜利掲示板</h1>
-      <CommonButton
-        label={"お題を作成する"}
-        onClick={() => dispatch(push('/createtheme'))}
-      />
+      <div className="create-theme-btn">
+        <CommonButton
+          label={"お題を作成する"}
+          onClick={() => dispatch(push('/createtheme'))}
+        />
+      </div>
       <ThemeList />
+      <div className="spacing-large"></div>
     </div>
   );
 }
