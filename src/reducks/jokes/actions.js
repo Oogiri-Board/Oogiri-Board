@@ -5,3 +5,10 @@ export const fetchJokesAction = (jokes) => {
     payload: jokes
   }
 }
+export const INCREMENT_LIKES = "INCREMENT_LIKES";
+export const incrementLikesAction = (jokes) => {
+  return {
+    type: INCREMENT_LIKES,
+    payload: jokes
+  }
+}

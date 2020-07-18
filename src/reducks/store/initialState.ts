@@ -4,12 +4,12 @@ type InitialStateObj = {
     id: string;
     theme: string;
     img: string;
-    // jokes: {
-    //   handleName: string;
-    //   jokeId: number;
-    //   joke: string;
-    //   likes: number;
-    // }
+    jokes: {
+      handleName: string;
+      jokeId: number;
+      joke: string;
+      likes: number;
+    }
   },
   jokes: {
     handleName: string;
@@ -27,12 +27,12 @@ const initialState: InitialStateObj = {
     id: "",
     img: '',
     theme: '',
-    // jokes: {
-    //   handleName: '',
-    //   jokeId: 0,
-    //   joke: '',
-    //   likes: 0
-    // },
+    jokes: {
+      handleName: '',
+      jokeId: 0,
+      joke: '',
+      likes: 0
+    },
   },
   // 回答 if文で親IDで検索を絞り表示しているが・・・
   jokes : {

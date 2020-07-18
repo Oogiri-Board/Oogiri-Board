@@ -1,6 +1,7 @@
 * {
   margin: 0;
   box-sizing: border-box;
+  font-family: Arial, Helvetica, sans-serif;
 }
 ul {
   list-style: none;
@@ -12,18 +13,35 @@ ul {
 .spacing-middium {
   height: 24px;
 }
+.spacing-large {
+  height: 36px;
+}
+.display-none {
+  display: none;
+}
+
+.header {
+  height: 82px;
+  line-height: 82px;
+  background-color: #425F9C;
+  display: flex;
+}
+.header-left {
+  color: #f0f4f9;
+}
+
 /* 投稿のスタイル */
 .contents {
-  border: solid 1px black;
+  border: solid 1px gray;
   border-radius: 4px;
   margin: 18px auto;
   padding: 0 16px;
   width: 860px;
-  background-color: #efefef;
+  background-color: #fff;
+  box-shadow: 0 0 4px rgba(0, 0 ,0, .18);
 }
-
 .theme {
-  padding: 12px 8px 8px 16px;
+  padding: 20px 8px 8px 16px;
 }
 .theme-header {
   display: flex;
@@ -64,10 +82,56 @@ ul {
 }
 .joke-likes {
   display: flex;
-  justify-content: space-around;
+  height: 55px;
+  line-height: 55px;
 }
 
+.create {
+  padding: 64px;
+  text-align: center;
+  margin: 0 auto;
+}
+.form-container {
+  display: flex;
+  width: 800px;
+  margin: 0 auto;
+  flex-direction: column;
+  text-align: left;
+}
+.image-preview {
+  display: flex;
+  flex-flow: wrap;
+}
+.image-preview > .image-thumb {
+  margin: .5rem;
+  /* width: calc(50% - 1rem); */
+}
 
+.add-image-text-right {
+  text-align: right;
+}
+
+/* 画像のサイズを整える */
+.image-thumb {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+}
+.image-thumb::before {
+  content: "";
+  display: block;
+  padding-top: 100%;
+  /* padding-top: 56.9%; */
+}
+.image-thumb > img {
+  position: absolute;
+  object-fit: cover;
+  object-position: center;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: auto;
+}
 
 
 /* モーダルのスタイル */
@@ -116,16 +180,39 @@ ul {
   box-shadow: 2px 2px 4px 0 rgba(0, 0, 0, 0.5);
   font-size: 18px;
   font-weight: bold;
-
+  margin-bottom: 16px;
+  margin-left: 32px;
 }
-
 .common-button:hover {
   color: #8491a5;
   background-color: #ccd9ea;
   transition: .3s ease-in-out;
 }
 
+.create-theme-btn {
+  margin: 24px 12px;
+  text-align: right;
+}
+
 @media (max-width: 670px) {
+  .header {
+    height: 48px;
+    line-height: 48px;
+  }
+  .contents {
+    margin: 16 auto;
+    width: auto;
+  }
+  .create {
+    padding: 24px 16px;
+  }
+  .form-container {
+    width: 340px;
+  }
+  .joke-header {
+    display: flex;
+    flex-direction: column-reverse;
+  }
   .modal-inner {
     width: 320px;
     height: 200px;
@@ -133,4 +220,5 @@ ul {
   .modal-content {
     width: 200px;
   }
+  
 }
