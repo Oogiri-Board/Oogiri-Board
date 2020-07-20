@@ -51,9 +51,9 @@ ul {
 .theme-img-area {
   margin: 0 auto;
 
-  /* 画像のサイズ firestorageに保存するときにサイズ指定 */
+  /* 画像のサイズ */
   width: 620px;
-  height: 360px;
+  height: auto;
 
   background-color: pink;
   border: solid 1px transparent;
