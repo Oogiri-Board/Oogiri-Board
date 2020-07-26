@@ -1,13 +1,11 @@
-type JokesProps = {
-  type: string,
+export type ThemeType = {
+  created_at: firebase.firestore.Timestamp;
+  handleName: string;
+  id: string;
+  image: {
+    id: string;
+    path: string;
+  }
+  theme: string;
+};
 
-  jokes: [{
-    handleName: string;
-    id: number,
-    isDisplay: boolean,
-    joke: string,
-    likes: number
-  }],
-}
-
-export default JokesProps;

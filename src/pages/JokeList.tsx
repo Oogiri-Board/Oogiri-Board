@@ -1,8 +1,9 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Joke } from './index';
+import Joke from '../components/Jokes/Joke';
 import { getJokes } from '../reducks/jokes/selectors';
 import { fetchJokes } from '../reducks/jokes/operations';
+import { JokeType } from '../reducks/jokes/type';
 
 type JokeListProps = {
   themeId: string;
@@ -12,7 +13,7 @@ const JokeList = (props: JokeListProps) => {
 
   const dispatch = useDispatch();
   const selector = useSelector((state) => state);
-  const jokes: any = getJokes(selector);
+  const jokes: JokeType[] = getJokes(selector);
 
   useEffect(() => {
     dispatch(fetchJokes(props.themeId));
@@ -24,15 +25,15 @@ const JokeList = (props: JokeListProps) => {
         {/* if文でネストしなければいけない・・・ */}
         { jokes && (
           jokes.length > 0 && (
-            (jokes.map((joke: any, index: number) => (
+            (jokes.map((joke: JokeType, index: number) => (
               <Joke
-                key={joke.id}
-                jokeId={joke.id}
-                handleName={joke.handleName}
-                joke={joke.joke}
-                likes={joke.likes}
-                index={index}
                 created_at={joke.created_at}
+                handleName={joke.handleName}
+                index={index}
+                joke={joke.joke}
+                jokeId={joke.jokeId}
+                key={index.toString()}
+                likes={joke.likes}
                 themeId={props.themeId}
               />
             )))

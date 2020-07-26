@@ -4,22 +4,20 @@ import { fetchJokesAction, incrementLikesAction } from './actions';
 
 const themesRef = db.collection('themes');
 
-export const fetchJokes = (themeId) => {
-  return async (dispatch) => {
+export const fetchJokes = (themeId: string) => {
+  return async (dispatch: any) => {
 
     // themeIdに関係なくsubコレクション全部拾ってくる
     const subCollection = db.collectionGroup('jokes');
 
     subCollection.get()
       .then(snapshots => {
-        const jokeList = [];
+        const jokeList: firebase.firestore.DocumentData[] = [];
         snapshots.forEach(snapshot => {
 
           // 本当はwhere句でしぼる？
           if (snapshot.data().themeId === themeId) {
             const joke = snapshot.data();
-            console.log(`themeId: ${themeId}`);
-            console.log(`joke.themeId: ${joke.themeId}, joke: ${joke.joke}`)
             jokeList.push(joke);
           }
         });
@@ -31,8 +29,8 @@ export const fetchJokes = (themeId) => {
 }
 
 // 回答作成
-export const saveJoke = (themeId, handleName, joke) => {
-  return async (dispatch) => {
+export const saveJoke = (themeId: string, handleName: string, joke: string) => {
+  return async (dispatch: any) => {
     
     // サブコレクションに追加
     const jokesRef = themesRef.doc(themeId).collection('jokes').doc();
@@ -42,7 +40,7 @@ export const saveJoke = (themeId, handleName, joke) => {
     const data = {
       created_at: timestamp,
       handleName: handleName,
-      id: id,
+      jokeId: id,
       joke: joke,
       themeId: themeId,
       likes: 0
@@ -58,9 +56,8 @@ export const saveJoke = (themeId, handleName, joke) => {
   }
 };
 
-export const incrementLikes = (themeId, jokeId, likes) => {
-  return async (dispatch) => {
-    console.log("いいね++");
+export const incrementLikes = (themeId: string, jokeId: string, likes: number) => {
+  return async (dispatch: any) => {
     const jokesRef = themesRef.doc(themeId).collection('jokes').doc(jokeId);
 
     const data = {
@@ -68,7 +65,6 @@ export const incrementLikes = (themeId, jokeId, likes) => {
     };
     return jokesRef.set(data, {merge: true})
       .then((snapshot) => {
-        console.log(`snapshot: ${snapshot}`)
         dispatch(incrementLikesAction(snapshot));
       })
       .catch((error) => {

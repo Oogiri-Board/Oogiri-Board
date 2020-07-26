@@ -1,45 +1,35 @@
-type InitialStateObj = {
-  themes: {
-    handleName: string;
-    id: string;
-    theme: string;
-    img: string;
-    jokes: {
-      handleName: string;
-      jokeId: number;
-      joke: string;
-      likes: number;
-    }
-  },
-  jokes: {
-    handleName: string;
-    joke: string;
-    id: string;
-    likes: number;
-    themeId: "",
-  }
-}
+import { ThemeType } from '../themes/types';
+import { JokeType } from '../jokes/type';
 
-const initialState: InitialStateObj = {
-  // 複数のお題とそれらの子(回答)
+import { FirebaseTimestamp } from '../../firebase/index';
+const timestamp = FirebaseTimestamp.now();
+
+const initialState: {
+  themes: ThemeType;
+  jokes: JokeType;
+} = {
+
+  // お題
   themes: {
-    handleName: '',
+    created_at: timestamp,
+    handleName: "",
     id: "",
-    img: '',
-    theme: '',
-    jokes: {
-      handleName: '',
-      jokeId: 0,
-      joke: '',
-      likes: 0
+    image: {
+      id: "",
+      path: "",
     },
+    theme: "",
   },
   // 回答 if文で親IDで検索を絞り表示しているが・・・
   jokes : {
-    handleName: '',
-    joke: '',
+    created_at: timestamp,
+    handleName: "",
     id: "",
+    joke: "",
+    jokeId: "",
+    key: "",
     likes: 0,
+    index: 0,
     themeId: "",
   }
 

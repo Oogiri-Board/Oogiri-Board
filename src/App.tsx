@@ -12,6 +12,7 @@ const App = () => {
       <main>
         <Router />
       </main>
+      <footer></footer>
     </>
   );
 }
