@@ -1,19 +1,22 @@
 import { push } from 'connected-react-router';
 import { FirebaseTimestamp, db } from '../../firebase';
 import { fetchThemesAction } from './actions';
+import { ThemeType } from './types';
 
 const themesRef = db.collection('themes');
 
 export const fetchThemes = () => {
-  return async (dispatch) => {
+  return async (dispatch: any) => {
     // orderBy: created_atが新しい順
     themesRef.orderBy('created_at', 'desc').get()
       .then(snapshots => {
-        const themeList = [];
+        const themeList: firebase.firestore.DocumentData[] = [];
         snapshots.forEach(snapshot => {
           const theme = snapshot.data();
           themeList.push(theme);
         })
+        console.log(JSON.stringify(themeList));
+        
         dispatch(fetchThemesAction(themeList));
       }).catch((error) => {
         throw new Error(error);
@@ -21,17 +24,23 @@ export const fetchThemes = () => {
   }
 }
 
+// この部分だけをimportできないか？
+type image = {
+  id: string;
+  path: string;
+}
 // CreateTheme画面で作成したデータをDBに保存する
-export const saveTheme = (handleName, theme, image) => {
-  return async (dispatch) => {
+export const saveTheme = (handleName: string, theme: string, image: image) => {
+  return async (dispatch: any) => {
 
     // データ作成・成形
     const timestamp = FirebaseTimestamp.now();
-    const data = {
+    const data: ThemeType = {
+      created_at: timestamp,
+      id: "",
+      image: image,
       handleName: handleName,
       theme: theme,
-      created_at: timestamp,
-      image: image,
     }
     const ref = themesRef.doc();
     const id = ref.id;

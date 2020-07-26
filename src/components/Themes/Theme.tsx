@@ -1,13 +1,13 @@
 import React, {useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { JokeList } from './index';
+import { JokeList } from '../../pages/index';
 import IconButton from '@material-ui/core/IconButton';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import ExpandLessIcon from '@material-ui/icons/ExpandLess';
 import CreateIcon from '@material-ui/icons/Create';
 import {push} from 'connected-react-router';
-import {getCreatedDate} from '../functions/index';
-import ImagePreview from '../components/Themes/ImagePreview';
+import {getCreatedDate} from '../../functions/index';
+import ImagePreview from './ImagePreview';
 
 export type ThemeProps = {
   themeId: string;
@@ -38,9 +38,6 @@ const Theme = (props: ThemeProps) => {
   const time: Date = props.created_at.toDate();
 
   const created = getCreatedDate(time);
-
-  console.log(created)
-  console.log(props.openJokesId)
 
   const clickClose = () => {
     props.setOpenNumber(0);

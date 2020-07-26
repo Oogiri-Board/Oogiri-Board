@@ -3,7 +3,7 @@ import { useDispatch } from 'react-redux';
 import { CommonButton, TextInput } from '../components/UIKit';
 import { push } from 'connected-react-router';
 import { saveJoke } from '../reducks/jokes/operations';
-import {db} from '../firebase/index';
+import { db } from '../firebase/index';
 
 const CreateJoke = () => {
 

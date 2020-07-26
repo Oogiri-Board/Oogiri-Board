@@ -1,33 +1,22 @@
 import React, { useCallback, useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Theme } from './index';
+import Theme from '../components/Themes/Theme';
 import { getThemes } from '../reducks/themes/selectors';
 import { fetchThemes } from '../reducks/themes/operations';
+import { ThemeType } from '../reducks/themes/types';
 
 const ThemeList = () => {
 
-  type ThemesObj = {
-    handleName: string;
-    theme: string;
-    created_at: any;
-    id: string;
-    image: {
-      id: string;
-      path: string;
-    }
-  }
-
   const dispatch = useDispatch();
   const selector = useSelector((state) => state);
-  const themes: any = getThemes(selector);
+  const themes: ThemeType[] = getThemes(selector);
 
   // 回答一覧を表示するお題を決める 0だと全部閉じ
   const [openJokesId, setOpenJokesId] = useState(0);
 
-  const setOpenNumber = useCallback((index) => {
+  // お題リストから選択されたお題のみ回答一覧を表示する
+  const setOpenNumber: (index: number) => void = useCallback((index) => {
     setOpenJokesId(index);
-    console.log("渡ってきたindex:" + index)
-
   }, []);
 
   useEffect(() => {
@@ -41,7 +30,7 @@ const ThemeList = () => {
         {/* if文でネストしなければいけない・・・ */}
         { themes && (
           themes.length > 0 && (
-            (themes.map((theme: ThemesObj, index: number) => (
+            (themes.map((theme: ThemeType, index: number) => (
               <Theme
                 key={theme.id}
                 handleName={theme.handleName}
